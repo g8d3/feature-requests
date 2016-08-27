@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  descrtiption: MyText
+  client: one
+  client_priority: 1
+  target_date: 2016-08-27
+  ticket_url: MyString
+  product_area: MyString
+
+two:
+  title: MyString
+  descrtiption: MyText
+  client: two
+  client_priority: 1
+  target_date: 2016-08-27
+  ticket_url: MyString
+  product_area: MyString

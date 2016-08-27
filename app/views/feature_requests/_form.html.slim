@@ -1,0 +1,30 @@
+= form_for @feature_request do |f|
+  - if @feature_request.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@feature_request.errors.count, "error")} prohibited this feature_request from being saved:"
+      ul
+        - @feature_request.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :descrtiption
+    = f.text_area :descrtiption
+  .field
+    = f.label :client
+    = f.text_field :client
+  .field
+    = f.label :client_priority
+    = f.number_field :client_priority
+  .field
+    = f.label :target_date
+    = f.date_select :target_date
+  .field
+    = f.label :ticket_url
+    = f.text_field :ticket_url
+  .field
+    = f.label :product_area
+    = f.text_field :product_area
+  .actions = f.submit
