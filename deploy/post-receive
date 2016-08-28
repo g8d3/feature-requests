@@ -1,0 +1,32 @@
+#!/bin/bash -l
+echo shell is $SHELL
+echo deploying as $(whoami)
+echo rvm current is $(rvm current)
+
+git_folder=$1
+app_name=$2
+repo_folder="${git_folder}/${app_name}.git"
+
+# create code folders
+mkdir -p /var/www/$app_name
+mkdir -p /var/www/$app_name/logs
+mkdir -p /var/www/$app_name/pids
+
+# checks out code in /var/www/$app_name
+git --work-tree=/var/www/$app_name --git-dir="/var/repos/${app_name}.git" checkout -f
+
+# bundles dependencies
+cd /var/www/$app_name
+bundle install --deployment --without development test
+
+# restart or start unicorn
+unicorn_pid="/var/www/$app_name/pids/unicorn.pid"
+if test -s $unicorn_pid; then
+  # USR2 is sent to master process to fork it.
+  # QUIT will be sent by that new process to old master in
+  # config/unicorn.rb
+  kill -USR2 `cat $unicorn_pid`
+else
+  # APP_NAME explicit instead of export on app_name
+  APP_NAME=$app_name RACK_ENV=production bundle exec unicorn -Dc config/unicorn.rb
+fi
