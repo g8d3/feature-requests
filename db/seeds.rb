@@ -16,5 +16,10 @@ Client.find_or_create_by name: 'Client C'
 end
 
 
-User.create_with(password: 'password', password_confirmation: 'password')
+admin = User.create_with(password: 'password', password_confirmation: 'password')
   .find_or_create_by email: 'admin@example.com'
+admin.update role: :admin
+
+guest = User.create_with(password: 'password', password_confirmation: 'password')
+  .find_or_create_by email: 'guest@example.com'
+guest.update role: :guest
