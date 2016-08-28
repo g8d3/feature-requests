@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @feature_request.title
+p
+  strong Descrtiption:
+  = @feature_request.descrtiption
+p
+  strong Client:
+  = @feature_request.client
+p
+  strong Client priority:
+  = @feature_request.client_priority
+p
+  strong Target date:
+  = @feature_request.target_date
+p
+  strong Ticket url:
+  = @feature_request.ticket_url
+p
+  strong Product area:
+  = @feature_request.product_area
+
+= link_to 'Edit', edit_feature_request_path(@feature_request)
+'|
+= link_to 'Back', feature_requests_path

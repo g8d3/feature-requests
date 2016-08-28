@@ -1,0 +1,47 @@
+#navbar.navbar-collapse.collapse
+  ul.nav.navbar-nav
+    li.dropdown
+      a.dropdown-toggle[href=feature_requests_path] Feature Requests
+      ul.dropdown-menu
+        li
+          a href=new_feature_request_path New
+    li.dropdown
+      a[href=clients_path] Clients
+      ul.dropdown-menu
+        li
+          a href=new_client_path New
+    / li.dropdown
+      a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"]
+        | Dropdown
+        span.caret
+      ul.dropdown-menu
+        li
+          a[href="#"]
+            | Action
+        li
+          a[href="#"]
+            | Another action
+        li
+          a[href="#"]
+            | Something else here
+        li.divider[role="separator"]
+        li.dropdown-header
+          | Nav header
+        li
+          a[href="#"]
+            | Separated link
+        li
+          a[href="#"]
+            | One more separated link
+  / ul.nav.navbar-nav.navbar-right
+    li.active
+      a[href="./"]
+        | Default
+        span.sr-only
+          | (current)
+    li
+      a[href="../navbar-static-top/"]
+        | Static top
+    li
+      a[href="../navbar-fixed-top/"]
+        | Fixed top

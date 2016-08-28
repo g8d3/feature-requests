@@ -1,0 +1,19 @@
+br
+= link_to 'New Client', new_client_path, class: 'btn btn-default'
+br
+br
+table.table
+  thead
+    tr
+      th Name
+      th
+      th
+
+  tbody
+    - @clients.each do |client|
+      tr
+        td = client.name
+        td = link_to 'Edit', edit_client_path(client)
+        td = link_to 'Destroy', client, data: { confirm: 'Are you sure?' }, method: :delete
+
+br

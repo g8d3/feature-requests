@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Client.find_or_create_by name: 'Client A'
+Client.find_or_create_by name: 'Client B'
+Client.find_or_create_by name: 'Client C'

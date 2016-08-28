@@ -1,0 +1,33 @@
+br
+= link_to 'New Feature Request', new_feature_request_path, class: 'btn btn-default'
+br
+br
+table.table
+  thead
+    tr
+      th Title
+      th Descrtiption
+      th Client
+      th Client priority
+      th Target date
+      th Ticket url
+      th Product area
+      th
+      th
+      th
+
+  tbody
+    - @feature_requests.each do |feature_request|
+      tr
+        td = feature_request.title
+        td = feature_request.descrtiption
+        td = feature_request.client
+        td = feature_request.client_priority
+        td = feature_request.target_date
+        td = feature_request.ticket_url
+        td = feature_request.product_area
+        td = link_to 'Show', feature_request
+        td = link_to 'Edit', edit_feature_request_path(feature_request)
+        td = link_to 'Destroy', feature_request, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
