@@ -28,7 +28,7 @@ class FeatureRequestsController < ApplicationController
 
     respond_to do |format|
       if @feature_request.save
-        format.html { redirect_to @feature_request, notice: 'Feature request was successfully created.' }
+        format.html { redirect_to feature_requests_path, notice: 'Feature request was successfully created.' }
         format.json { render :show, status: :created, location: @feature_request }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class FeatureRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @feature_request.update(feature_request_params)
-        format.html { redirect_to @feature_request, notice: 'Feature request was successfully updated.' }
+        format.html { redirect_to feature_requests_path, notice: 'Feature request was successfully updated.' }
         format.json { render :show, status: :ok, location: @feature_request }
       else
         format.html { render :edit }
