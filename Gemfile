@@ -34,6 +34,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'pry-rails'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails'
 end
 
 group :development do
@@ -55,3 +57,4 @@ gem 'simple_form'
 gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
 # gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'rails-assets-datatables', source: 'https://rails-assets.org'
+# gem 'squeel'
