@@ -15,6 +15,18 @@ Client.find_or_create_by name: 'Client C'
   ProductArea.find_or_create_by name: area
 end
 
+while FeatureRequest.count < 100
+  FeatureRequest.create(
+    title: Faker::Lorem.sentence,
+    description: Faker::Lorem.sentence,
+    client: Client.all.sample,
+    client_priority: rand(20) + 1,
+    target_date: Faker::Date.forward(60),
+    ticket_url: Faker::Internet.url,
+    product_area: ProductArea.all.sample
+  )
+end
+
 
 admin = User.create_with(password: 'password', password_confirmation: 'password')
   .find_or_create_by email: 'admin@example.com'

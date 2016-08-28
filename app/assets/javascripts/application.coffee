@@ -14,9 +14,16 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require bootstrap
+# require datatables
+# require datatables-bootstrap3-plugin
 #= require dataTables/jquery.dataTables
 #= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 #= require_tree .
 
 $(document).on 'turbolinks:load', ->
-  # $('table').DataTable()
+  # $('table').dataTable()
+  $('table').DataTable
+    order: []
+    columnDefs: [
+      orderable: false, targets: [-1, -2]
+    ]
