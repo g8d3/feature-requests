@@ -6,7 +6,7 @@ table.table
   thead
     tr
       th Title
-      th Descrtiption
+      th Description
       th Client
       th Client priority
       th Target date
@@ -19,7 +19,7 @@ table.table
     - @feature_requests.each do |feature_request|
       tr
         td = feature_request.title
-        td = feature_request.descrtiption
+        td = feature_request.description
         td = feature_request.client&.name
         td = feature_request.client_priority
         td = feature_request.target_date
