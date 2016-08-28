@@ -1,11 +1,13 @@
 .row
-  = simple_form_for @feature_request do |f|
+  .col-md-3
+  .col-md-6
+    = simple_form_for @feature_request do |f|
 
-    = f.input :title
-    = f.input :description
-    = f.association :client
-    = f.input :client_priority, input_html: {min: 1}
-    = f.input :target_date
-    = f.input :ticket_url
-    = f.association :product_area
-    = f.submit class: 'btn btn-default'
+      = f.input :title
+      = f.input :description
+      = f.association :client
+      = f.input :client_priority, input_html: {min: 1}
+      = f.input :target_date
+      = f.input :ticket_url
+      = f.association :product_area
+      = f.submit class: 'btn btn-default'

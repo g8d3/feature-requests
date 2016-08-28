@@ -1,8 +1,12 @@
-= simple_form_for(@product_area) do |f|
-  = f.error_notification
+.row
+  .col-md-3
+  .col-md-6
 
-  .form-inputs
-    = f.input :name
+    = simple_form_for(@product_area) do |f|
+      = f.error_notification
 
-  .form-actions
-    = f.button :submit
+      .form-inputs
+        = f.input :name
+
+      .form-actions
+        = f.button :submit
