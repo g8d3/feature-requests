@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828160153) do
+ActiveRecord::Schema.define(version: 20160828160556) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "name"
@@ -25,10 +25,16 @@ ActiveRecord::Schema.define(version: 20160828160153) do
     t.integer  "client_priority"
     t.date     "target_date"
     t.string   "ticket_url"
-    t.string   "product_area"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "product_area_id"
     t.index ["client_id"], name: "index_feature_requests_on_client_id"
+  end
+
+  create_table "product_areas", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

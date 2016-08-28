@@ -1,0 +1,1 @@
+json.array! @product_areas, partial: 'product_areas/product_area', as: :product_area

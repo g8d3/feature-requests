@@ -1,0 +1,7 @@
+- if record.errors.any?
+  .alert.fade.in.alert-danger
+    button.close data-dismiss="alert" ×
+    h4 = "#{pluralize(record.errors.count, "error")} prohibited this request from being saved:"
+    ul
+      - record.errors.full_messages.each do |message|
+        li = message

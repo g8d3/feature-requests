@@ -1,16 +1,13 @@
-= simple_form_for @feature_request do |f|
-  - if @feature_request.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@feature_request.errors.count, "error")} prohibited this feature_request from being saved:"
-      ul
-        - @feature_request.errors.full_messages.each do |message|
-          li = message
+.row
+  .col-md-3
+  .col-md-6
+    = simple_form_for @feature_request do |f|
 
-  = f.input :title
-  = f.input :description
-  = f.association :client
-  = f.input :client_priority
-  = f.input :target_date
-  = f.input :ticket_url
-  = f.input :product_area
-  = f.submit class: 'btn btn-default'
+      = f.input :title
+      = f.input :description
+      = f.association :client
+      = f.input :client_priority, input_html: {min: 1}
+      = f.input :target_date
+      = f.input :ticket_url
+      = f.association :product_area
+      = f.submit class: 'btn btn-default'

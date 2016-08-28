@@ -1,0 +1,1 @@
+json.partial! "product_areas/product_area", product_area: @product_area

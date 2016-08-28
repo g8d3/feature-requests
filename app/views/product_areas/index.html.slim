@@ -1,0 +1,19 @@
+br
+= link_to 'New Product area', new_product_area_path, class: 'btn btn-default'
+br
+br
+table.table
+  thead
+    tr
+      th Name
+      th
+      th
+
+  tbody
+    - @product_areas.each do |product_area|
+      tr
+        td = product_area.name
+        td = link_to 'Edit', edit_product_area_path(product_area)
+        td = link_to 'Destroy', product_area, data: { confirm: 'Are you sure?' }, method: :delete
+
+br

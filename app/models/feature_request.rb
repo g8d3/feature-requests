@@ -1,7 +1,11 @@
 class FeatureRequest < ApplicationRecord
   belongs_to :client
+  belongs_to :product_area
 
   after_save :sum_gte_priorities
+
+  validates_numericality_of :client_priority, greater_than_or_equal_to: 1
+  validates :ticket_url, :format => URI::regexp(%w(http https))
 
   def sum_gte_priorities
     current = self

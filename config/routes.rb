@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :product_areas
   devise_for :users
   resources :clients
   resources :feature_requests
