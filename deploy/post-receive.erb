@@ -23,6 +23,7 @@ bundle exec rake db:seed
 mkdir -p tmp/pids
 server_pid="<%= app_folder %>/tmp/pids/server.pid"
 if [ -s $server_pid ]; then
-  bundle exec pumactl -P $server_pid stop
+  touch tmp/restart.txt
+else
+  bundle exec puma -b unix://<%= sock_file %> -e <%= rails_env %> --pidfile $server_pid -d --redirect-stderr log/puma_err.log  --redirect-stdout log/puma_out.log
 fi
-bundle exec puma -b unix://<%= sock_file %> -e <%= rails_env %> --pidfile $server_pid -d --redirect-stderr log/puma_err.log  --redirect-stdout log/puma_out.log
