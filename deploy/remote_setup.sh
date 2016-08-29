@@ -19,15 +19,19 @@ echo nginx_file $nginx_file
 echo nginx_file_enabled $nginx_file_enabled
 
 # Install RVM
+if [ ! $(command -v rvm) ]; then
 command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 \curl -sSL https://get.rvm.io | bash -s stable --ruby
 echo 'source /usr/local/rvm/scripts/rvm' >> ~/.bashrc
+fi
 
 # Install bundler
-gem i bundler
+if [ ! $(command -v bundler) ]; then gem i bundler; fi
 
 # Install git and nginx, see below how to config
-apt-get install -y git nginx nodejs
+if [ ! $(command -v git) ]; then apt-get install -y git; fi
+if [ ! $(command -v nginx) ]; then apt-get install -y nginx; fi
+if [ ! $(command -v nodejs) ]; then apt-get install -y nodejs; fi
 
 mkdir -p "${repo_folder}"
 mkdir -p "${app_folder}"
