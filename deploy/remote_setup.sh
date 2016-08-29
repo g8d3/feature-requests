@@ -19,9 +19,9 @@ echo nginx_file $nginx_file
 echo nginx_file_enabled $nginx_file_enabled
 
 # Install RVM
-# command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-# \curl -sSL https://get.rvm.io | bash -s stable --ruby
-# echo 'source /usr/local/rvm/scripts/rvm' >> ~/.bashrc
+command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+\curl -sSL https://get.rvm.io | bash -s stable --ruby
+echo 'source /usr/local/rvm/scripts/rvm' >> ~/.bashrc
 
 # Install bundler
 gem i bundler
