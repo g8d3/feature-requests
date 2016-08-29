@@ -20,6 +20,7 @@ bundle exec rake db:seed
 
 
 # restart or start server
+mkdir -p tmp/pids
 server_pid="<%= app_folder %>/tmp/pids/server.pid"
 if [ -s $server_pid ]; then
   bundle exec pumactl -P $server_pid stop
