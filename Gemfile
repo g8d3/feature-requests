@@ -54,10 +54,18 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'slim-rails'
 gem 'simple_form'
+
 gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
-gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'rails-assets-datatables', source: 'https://rails-assets.org'
 gem 'rails-assets-angular-datatables', source: 'https://rails-assets.org'
-# gem 'squeel'
 gem 'rails-assets-datatables-bootstrap3-plugin', source: 'https://rails-assets.org'
+gem 'bootstrap-social-rails'
+gem 'font-awesome-rails'
+
+
+gem 'jquery-datatables-rails', '~> 3.3.0'
+# gem 'squeel'
 gem 'faker'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
+gem "bower-rails", "~> 0.10.0"
