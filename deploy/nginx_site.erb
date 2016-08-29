@@ -1,6 +1,6 @@
 upstream app {
   # Path to Unicorn SOCK file, as defined previously
-  server unix:/tmp/puma.<%= app_name %>.sock fail_timeout=0;
+  server unix:<%= sock_file %> fail_timeout=0;
 }
 
 server {
@@ -9,10 +9,10 @@ server {
   listen 80;
 
   # Set the server name, similar to Apache's settings
-  server_name <%= app_name %>;
+  # server_name localhost;
 
   # Application root, as defined previously
-  root /var/www/<%= app_name %>;
+  root <%= app_folder %>/public;
 
   try_files $uri/index.html $uri @app;
 

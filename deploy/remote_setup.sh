@@ -1,36 +1,51 @@
 repo_folder=$1
 app_name=$2
+rails_env=$3
+apps_folder=$4
+app_folder=$5
+repos_folder=$6
 
 nginx_file="/etc/nginx/sites-available/${app_name}"
 nginx_file_enabled="/etc/nginx/sites-enabled/${app_name}"
-
-apps_folder="${3:-$HOME/apps}"
-app_folder="${apps_folder}/${app_name}"
-
 sock_file="/tmp/puma.${app_name}.sock"
 
-# echo $repo_folder
-# echo $app_name
-# echo $nginx_file
-# echo $nginx_file_enabled
+echo app_name $app_name
+echo repos_folder $repos_folder
+echo repo_folder $repo_folder
+echo apps_folder $apps_folder
+echo app_folder $app_folder
+echo rails_env $rails_env
+echo nginx_file $nginx_file
+echo nginx_file_enabled $nginx_file_enabled
 
 # Install RVM
-\curl -sSL https://get.rvm.io | bash -s stable --ruby
-echo 'source /usr/local/rmv/scripts/rvm' >> ~/.bashrc
+# command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+# \curl -sSL https://get.rvm.io | bash -s stable --ruby
+# echo 'source /usr/local/rvm/scripts/rvm' >> ~/.bashrc
 
 # Install bundler
 gem i bundler
 
 # Install git and nginx, see below how to config
-apt-get install git nginx
+apt-get install -y git nginx nodejs
+
+mkdir -p "${repo_folder}"
+mkdir -p "${app_folder}"
 
 # Create git bare repository
-mkdir -p "${repo_folder}"
 cd "${repo_folder}"
 git init --bare
-erb app_folder="${app_folder}" repo_folder="${repo_folder}" sock_file="${sock_file}" deploy/post-receive.erb > hooks/post-receive
+echo "erb app_folder=$app_folder repo_folder=$repo_folder sock_file=$sock_file rails_env=$rails_env ~/deploy/post-receive.erb > hooks/post-receive"
+erb app_folder="${app_folder}" repo_folder="${repo_folder}" sock_file="${sock_file}" rails_env="${rails_env}" ~/deploy/post-receive.erb > hooks/post-receive
 chmod +x hooks/post-receive
-erb app_name="${app_name}" deploy/nginx_site.erb > "${nginx_file}"
+chown -R www-data:www-data "${apps_folder}"
+chown -R www-data:www-data "${repos_folder}"
+
+# nginx file
+erb sock_file="${sock_file}" app_folder="${app_folder}" ~/deploy/nginx_site.erb > "${nginx_file}"
 sudo ln -s "${nginx_file}" "${nginx_file_enabled}"
+rm /etc/nginx/sites-enabled/default
 service nginx restart
+
+# git allow force delete
 git config receive.denyDeleteCurrent warn
