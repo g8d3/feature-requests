@@ -24,4 +24,4 @@ server_pid="<%= app_folder %>/tmp/pids/server.pid"
 if [ -s $server_pid ]; then
   bundle exec pumactl -P $server_pid stop
 fi
-bundle exec puma -b unix://<%= sock_file %> -e <%= rails_env %>
+bundle exec puma -b unix://<%= sock_file %> -e <%= rails_env %> --pidfile $server_pid -d --redirect-stderr log/puma_err.log  --redirect-stdout log/puma_out.log
