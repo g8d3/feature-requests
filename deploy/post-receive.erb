@@ -1,0 +1,21 @@
+#!/bin/bash -l
+echo shell is $SHELL
+echo deploying as $(whoami)
+echo rvm current is $(rvm current)
+
+# create code folder
+mkdir -p "<%= app_folder %>"
+
+# checks out code in code folder
+git --work-tree="<%= app_folder %>" --git-dir="<%= repo_folder %>" checkout -f
+
+# bundles dependencies
+cd <%= app_folder %>
+bundle install --deployment --without development test
+
+# restart or start server
+server_pid="<%= app_folder %>/tmp/pids/server.pid"
+if [ -s $server_pid ]; then
+  pumactl -P $server_pid stop
+fi
+puma -b unix://<%= sock_file %>

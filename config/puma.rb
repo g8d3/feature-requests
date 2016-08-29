@@ -11,6 +11,11 @@ threads threads_count, threads_count
 #
 port        ENV.fetch("PORT") { 3000 }
 
+# bind 'unix:///var/tmp/puma.sock'
+# daemonize
+# pidfile 'tmp/pids/server.pid'
+# stdout_redirect 'log/puma_out.log', 'log/puma_err.log'
+
 # Specifies the `environment` that Puma will run in.
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
