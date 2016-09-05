@@ -1,5 +1,5 @@
 ssh_host=$1
-app_name=$2
+app_name=${2:-$(basename $(pwd))}
 rails_env=${3:-production}
 git_remote=${4:-live}
 repos_folder='/var/repos'

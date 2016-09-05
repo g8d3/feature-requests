@@ -18,12 +18,20 @@ bundle exec rake db:create
 bundle exec rake db:migrate
 bundle exec rake db:seed
 
-
-# restart or start server
 mkdir -p tmp/pids
+
+# restart or start puma application server
 server_pid="<%= app_folder %>/tmp/pids/server.pid"
 if [ -s $server_pid ]; then
-  touch tmp/restart.txt
-else
-  bundle exec puma -b unix://<%= sock_file %> -e <%= rails_env %> --pidfile $server_pid -d --redirect-stderr log/puma_err.log  --redirect-stdout log/puma_out.log
+  # touch tmp/restart.txt
+  kill -9 $(cat $server_pid)
 fi
+bundle exec puma -b unix://<%= sock_file %> -e <%= rails_env %> --pidfile $server_pid -d --redirect-stderr log/puma_err.log  --redirect-stdout log/puma_out.log
+
+# restart or start puma real time sync server
+server_pid="<%= app_folder %>/tmp/pids/sync.pid"
+if [ -s $server_pid ]; then
+  # touch tmp/restart.txt
+  kill -9 $(cat $server_pid)
+fi
+bundle exec rackup sync.ru -P $server_pid -E production
