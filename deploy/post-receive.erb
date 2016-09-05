@@ -34,4 +34,4 @@ if [ -s $server_pid ]; then
   # touch tmp/restart.txt
   kill -9 $(cat $server_pid)
 fi
-bundle exec rackup sync.ru -P $server_pid -E production
+bundle exec rackup sync.ru -P $server_pid -D -E production 
