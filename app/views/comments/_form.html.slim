@@ -1,0 +1,12 @@
+- comment ||= @comment
+= simple_form_for(comment, remote: true) do |f|
+  = f.error_notification
+
+  = f.hidden_field :commentable_type
+  = f.hidden_field :commentable_id
+  = f.hidden_field :user_id
+
+  .form-group
+    = f.text_area :text, class: 'form-control'
+
+  = f.button :submit, 'Comment'
