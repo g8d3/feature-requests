@@ -1,3 +1,6 @@
-tr
-  td = comment.user.email
-  td = comment.text
+.clearfix style='border-top: 1px #cacaca solid'
+  .text-muted.small.col-sm-3
+    = "#{comment.user.username}"
+    br
+    = "#{time_ago_in_words comment.created_at} ago"
+  .col-sm-9 = comment.text

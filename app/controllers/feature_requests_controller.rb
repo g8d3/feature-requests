@@ -4,7 +4,9 @@ class FeatureRequestsController < ApplicationController
   # GET /feature_requests
   # GET /feature_requests.json
   def index
-    @feature_requests = FeatureRequest.all.order('client_priority asc')
+    @feature_requests = FeatureRequest.all
+      .includes(:client, :product_area)
+      .order('client_priority asc')
   end
 
   # GET /feature_requests/1
@@ -28,7 +30,7 @@ class FeatureRequestsController < ApplicationController
 
     respond_to do |format|
       if @feature_request.save
-        format.html { redirect_to feature_requests_path, notice: 'Feature request was successfully created.' }
+        format.html { redirect_to edit_path, notice: 'Feature request was successfully created.' }
         format.json { render :show, status: :created, location: @feature_request }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class FeatureRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @feature_request.update(feature_request_params)
-        format.html { redirect_to feature_requests_path, notice: 'Feature request was successfully updated.' }
+        format.html { redirect_to edit_path, notice: 'Feature request was successfully updated.' }
         format.json { render :show, status: :ok, location: @feature_request }
       else
         format.html { render :edit }
@@ -71,5 +73,9 @@ class FeatureRequestsController < ApplicationController
     def feature_request_params
       params.require(:feature_request).permit(:title, :description, :client_id,
         :client_priority, :target_date, :ticket_url, :product_area_id)
+    end
+
+    def edit_path
+      edit_feature_request_path(@feature_request)
     end
 end

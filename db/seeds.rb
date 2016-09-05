@@ -15,6 +15,20 @@ Client.find_or_create_by name: 'Client C'
   ProductArea.find_or_create_by name: area
 end
 
+User.create_with(
+  username: Faker::Internet.user_name,
+  password: 'FakePassword',
+  password_confirmation: 'FakePassword',
+  role: :admin)
+  .find_or_create_by email: 'admin@example.com'
+
+User.create_with(
+  username: Faker::Internet.user_name,
+  password: 'FakePassword',
+  password_confirmation: 'FakePassword',
+  role: :guest)
+  .find_or_create_by email: 'guest@example.com'
+
 if ENV['reseed']
   FeatureRequest.delete_all
   Comment.delete_all
@@ -39,15 +53,6 @@ while FeatureRequest.count < 25
   )
 
   (rand(4) + 2).times.map do |i|
-    Comment.create commentable: request, user: User.all.sample, text: eval(text.sample)
+    c=Comment.create commentable: request, user: User.all.sample, text: eval(text.sample)
   end
 end
-
-
-admin = User.create_with(password: 'password', password_confirmation: 'password')
-  .find_or_create_by email: 'admin@example.com'
-admin.update role: :admin
-
-guest = User.create_with(password: 'password', password_confirmation: 'password')
-  .find_or_create_by email: 'guest@example.com'
-guest.update role: :guest
