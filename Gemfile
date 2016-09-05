@@ -69,3 +69,7 @@ gem 'faker'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem "bower-rails", "~> 0.10.0"
+gem 'faye'
+gem 'thin', require: false
+gem 'render_sync'
+gem 'nested_form'
