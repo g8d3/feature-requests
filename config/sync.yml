@@ -1,7 +1,7 @@
 # Faye
 development:
-  server: "http://localhost:9292/faye"
-  adapter_javascript_url: "http://localhost:9292/faye/faye.js"
+  server: <%=  ENV['SYNC_SERVER_URL'] || "http://localhost:9292/faye" %>
+  adapter_javascript_url: <%= ENV['FAYE_JS_URL'] || "http://localhost:9292/faye/faye.js" %>
   auth_token: DEVELOPMENT_SECRET_TOKEN
   adapter: "Faye"
   async: true
@@ -27,8 +27,8 @@ test:
   async: false
 
 production:
-  server: "http://example.com/faye"
-  adapter_javascript_url: "http://localhost:9292/faye/faye.js"
+  server: <%=  ENV['SYNC_SERVER_URL'] || "http://localhost:9292/faye" %>
+  adapter_javascript_url: <%= ENV['FAYE_JS_URL'] || "http://localhost:9292/faye/faye.js" %>
   adapter: "Faye"
   auth_token: "0904d1df3a6d4c024a564a023b8a6e36c42a91044a7de44c6a585d32b7b567da"
   async: true
