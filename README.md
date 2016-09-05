@@ -77,5 +77,5 @@ In this file you will change all the configuration values the application needs.
   git push live
   ```
 
-This command will execute commands that need to be run on remote host so
-application runs in production.
+  This command will execute commands that need to be run on remote host so
+  application runs in production.
