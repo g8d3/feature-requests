@@ -9,13 +9,14 @@
       = f.input :ticket_url
       = f.association :product_area
       = f.submit class: 'btn btn-default'
-  .col-md-6
-    h3 Discussion
-    #comments style='height: 20em; overflow:auto; position:relative'
-        = sync partial: "comment", collection: @feature_request.comments!
-        = sync_new partial: "comment", resource: Comment.new, scope: Comment.for_request(@feature_request)
-    br
-    = render 'comments/form', comment: @feature_request.comments.build(user: current_user)
+  - if @feature_request.persisted?
+    .col-md-6
+      h3 Discussion
+      #comments style='height: 20em; overflow:auto; position:relative'
+          = sync partial: "comment", collection: @feature_request.comments!
+          = sync_new partial: "comment", resource: Comment.new, scope: Comment.for_request(@feature_request)
+      br
+      = render 'comments/form', comment: @feature_request.comments.build(user: current_user)
       / #, scope: Todo.active
 
     / .col-md-6
