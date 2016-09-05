@@ -15,16 +15,32 @@ Client.find_or_create_by name: 'Client C'
   ProductArea.find_or_create_by name: area
 end
 
-while FeatureRequest.count < 100
-  FeatureRequest.create(
+if ENV['reseed']
+  FeatureRequest.delete_all
+  Comment.delete_all
+end
+
+text = [
+  5.times.map{'Faker::Hacker.say_something_smart'},
+  2.times.map{'Faker::Hipster.sentence'},
+  1.times.map{'Faker::ChuckNorris.fact'}
+].flatten
+
+while FeatureRequest.count < 25
+
+  request = FeatureRequest.create(
     title: Faker::Lorem.sentence,
     description: Faker::Lorem.sentence,
     client: Client.all.sample,
     client_priority: rand(20) + 1,
     target_date: Faker::Date.forward(60),
     ticket_url: Faker::Internet.url,
-    product_area: ProductArea.all.sample
+    product_area: ProductArea.all.sample,
   )
+
+  (rand(4) + 2).times.map do |i|
+    Comment.create commentable: request, user: User.all.sample, text: eval(text.sample)
+  end
 end
 
 
