@@ -18,11 +18,13 @@
 # require datatables-bootstrap3-plugin
 #= require dataTables/jquery.dataTables
 #= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+#= require sync
+#= require jquery_nested_form
 #= require_tree .
 
 $(document).on 'turbolinks:load', ->
   # $('table').dataTable()
-  $('table').DataTable
+  $('table.dt').DataTable
     order: []
     columnDefs: [
       orderable: false, targets: [-1, -2]

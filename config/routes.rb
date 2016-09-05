@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :product_areas
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :clients
