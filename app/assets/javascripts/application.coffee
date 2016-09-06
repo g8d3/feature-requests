@@ -23,9 +23,18 @@
 #= require_tree .
 
 $(document).on 'turbolinks:load', ->
+
+
   # $('table').dataTable()
-  $('table.dt').DataTable
+  window.table = $('table.dt').DataTable
+    # responsive: true
     order: []
     columnDefs: [
       orderable: false, targets: [-1, -2]
     ]
+
+  # Apply the search
+  ths = 'table.dt thead tr.filters th'
+  $("#{ths} input").on 'keyup change', ->
+    column = table.column( $(this).parent().index()+':visible' )
+    column.search(@value).draw()

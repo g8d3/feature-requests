@@ -59,6 +59,7 @@ gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
 gem 'rails-assets-datatables', source: 'https://rails-assets.org'
 gem 'rails-assets-angular-datatables', source: 'https://rails-assets.org'
 gem 'rails-assets-datatables-bootstrap3-plugin', source: 'https://rails-assets.org'
+gem 'rails-assets-datatables-responsive', source: 'https://rails-assets.org'
 gem 'bootstrap-social-rails'
 gem 'font-awesome-rails'
 

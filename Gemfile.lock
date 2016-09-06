@@ -220,6 +220,9 @@ GEM
       rails-assets-bootstrap (~> 3.3.0)
       rails-assets-datatables (~> 1.10.0)
       rails-assets-font-awesome (~> 4.3.0)
+    rails-assets-datatables-responsive (2.1.0)
+      rails-assets-datatables (>= 1.10.1)
+      rails-assets-jquery (>= 1.7.0)
     rails-assets-font-awesome (4.3.0)
     rails-assets-jquery (3.1.0)
     rails-dom-testing (2.0.1)
@@ -344,6 +347,7 @@ DEPENDENCIES
   rails-assets-bootstrap!
   rails-assets-datatables!
   rails-assets-datatables-bootstrap3-plugin!
+  rails-assets-datatables-responsive!
   render_sync
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)

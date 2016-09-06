@@ -4,16 +4,33 @@ br
 br
 table.table.dt
   thead
+    tr.filters
+      th
+        input.form-control type='text' style='width: 8em' placeholder='Title'
+      th
+        input.form-control type='text' style='width: 8em' placeholder='Description'
+      th
+        input.form-control type='text' style='width: 5em' placeholder='Client'
+      th
+        input.form-control type='text' style='width: 6em' placeholder='Priority'
+      th
+        input.form-control type='text' style='width: 5em' placeholder='Date'
+      th
+        input.form-control type='text' style='width: 12em' placeholder='URL'
+      th
+        input.form-control type='text' style='width: 5em' placeholder='Area'
+
     tr
       th Title
       th Description
       th Client
-      th Client priority
+      th Priority
       th Target date
       th Ticket url
       th Product area
       th
       th
+
 
   tbody
     - @feature_requests.each do |feature_request|
