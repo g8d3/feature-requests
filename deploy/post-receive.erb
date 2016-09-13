@@ -13,6 +13,7 @@ pwd
 
 bundle install --deployment --without development test
 export RAILS_ENV=<%= rails_env %>
+bundle exec rake bower:install['--allow-root']
 bundle exec rake assets:precompile
 bundle exec rake db:create
 bundle exec rake db:migrate
@@ -34,4 +35,4 @@ if [ -s $server_pid ]; then
   # touch tmp/restart.txt
   kill -9 $(cat $server_pid)
 fi
-bundle exec rackup sync.ru -P $server_pid -D -E production 
+bundle exec rackup sync.ru -P $server_pid -D -E production
