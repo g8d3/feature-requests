@@ -32,6 +32,7 @@ if [ ! $(command -v bundler) ]; then gem i bundler; fi
 if [ ! $(command -v git) ]; then apt-get install -y git; fi
 if [ ! $(command -v nginx) ]; then apt-get install -y nginx; fi
 if [ ! $(command -v nodejs) ]; then apt-get install -y nodejs; fi
+if [ ! $(command -v bower) ]; then npm install bower -g; fi
 
 mkdir -p "${repo_folder}"
 mkdir -p "${app_folder}"
