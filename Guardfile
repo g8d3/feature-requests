@@ -15,7 +15,10 @@
 #
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
-guard 'livereload' do
+require 'dotenv'
+Dotenv.load '.env.development'
+
+guard 'livereload', port: ENV['LIVE_RELOAD_PORT'] do
   extensions = {
     css: :css,
     scss: :css,

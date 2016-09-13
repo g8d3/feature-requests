@@ -1,0 +1,8 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "bootstrap": "latest",
+    "datatables.net-responsive": "latest",
+    "datatables.net-responsive-bs": "latest"
+  }
+}

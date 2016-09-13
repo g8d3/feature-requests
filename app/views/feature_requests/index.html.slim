@@ -2,8 +2,33 @@ br
 = link_to 'New Feature Request', new_feature_request_path, class: 'btn btn-default'
 br
 br
-table.table.dt
+table.table.dt.dt-responsive width='100%'
   thead
+    / tr.filters
+      th.text-center
+        input.form-control type='text' style='width: 8em' placeholder='Title'
+        div Title
+      th.text-center
+        input.form-control type='text' style='width: 8em' placeholder='Description'
+        div Description
+      th.text-center
+        input.form-control type='text' style='width: 5em' placeholder='Client'
+        div Client
+      th.text-center
+        input.form-control type='text' style='width: 6em' placeholder='Priority'
+        div Priority
+      th.text-center
+        input.form-control type='text' style='width: 5em' placeholder='Date'
+        div Date
+      th.text-center.text-center
+        input.form-control type='text' style='width: 12em' placeholder='URL'
+        div URL
+      th.text-center
+        input.form-control type='text' style='width: 5em' placeholder='Area'
+        div Area
+      th
+      th
+
     tr.filters
       th
         input.form-control type='text' style='width: 8em' placeholder='Title'
@@ -15,9 +40,9 @@ table.table.dt
         input.form-control type='text' style='width: 6em' placeholder='Priority'
       th
         input.form-control type='text' style='width: 5em' placeholder='Date'
-      th
+      th.hidden-sm.hidden-xs
         input.form-control type='text' style='width: 12em' placeholder='URL'
-      th
+      th.hidden-sm.hidden-xs
         input.form-control type='text' style='width: 5em' placeholder='Area'
 
     tr

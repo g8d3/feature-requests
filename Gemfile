@@ -55,16 +55,21 @@ gem 'devise'
 gem 'slim-rails'
 gem 'simple_form'
 
-gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
-gem 'rails-assets-datatables', source: 'https://rails-assets.org'
-gem 'rails-assets-angular-datatables', source: 'https://rails-assets.org'
-gem 'rails-assets-datatables-bootstrap3-plugin', source: 'https://rails-assets.org'
-gem 'rails-assets-datatables-responsive', source: 'https://rails-assets.org'
+# gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
+
+# did not work
+# gem 'rails-assets-datatables', source: 'https://rails-assets.org'
+# gem 'rails-assets-datatables-responsive', source: 'https://rails-assets.org'
+
+# not used yet
+# gem 'rails-assets-angular-datatables', source: 'https://rails-assets.org'
+# gem 'rails-assets-datatables-bootstrap3-plugin', source: 'https://rails-assets.org'
+
+# assets
 gem 'bootstrap-social-rails'
 gem 'font-awesome-rails'
+# gem 'jquery-datatables-rails', '~> 3.3.0'
 
-
-gem 'jquery-datatables-rails', '~> 3.3.0'
 # gem 'squeel'
 gem 'faker'
 gem 'omniauth-facebook'

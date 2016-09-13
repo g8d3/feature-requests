@@ -53,7 +53,9 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Add Rack::LiveReload to the bottom of the middleware stack with the default options:
-  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+  config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload,
+    live_reload_port: ENV['LIVE_RELOAD_PORT'] # default 35729
+  )
 
   # or, if you're using better_errors:
   # config.middleware.insert_before Rack::Lock, Rack::LiveReload

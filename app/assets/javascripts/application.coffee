@@ -13,11 +13,25 @@
 #= require jquery
 #= require jquery_ujs
 #= require turbolinks
-#= require bootstrap
+
+# require bootstrap
+
+# from jquery-datatables-rails
+# require dataTables/jquery.dataTables
+# require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+
+# from rails-assets
 # require datatables
 # require datatables-bootstrap3-plugin
-#= require dataTables/jquery.dataTables
-#= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+# require datatables-responsive
+
+# from bower rails
+#= require bootstrap/dist/js/bootstrap
+#= require datatables.net/js/jquery.dataTables
+#= require datatables.net-bs/js/dataTables.bootstrap
+#= require datatables.net-responsive/js/dataTables.responsive
+#= require datatables.net-responsive-bs/js/responsive.bootstrap
+
 #= require sync
 #= require jquery_nested_form
 #= require_tree .
@@ -27,7 +41,6 @@ $(document).on 'turbolinks:load', ->
 
   # $('table').dataTable()
   window.table = $('table.dt').DataTable
-    # responsive: true
     order: []
     columnDefs: [
       orderable: false, targets: [-1, -2]
@@ -35,6 +48,8 @@ $(document).on 'turbolinks:load', ->
 
   # Apply the search
   ths = 'table.dt thead tr.filters th'
+  # if input is with header text
+  # $("#{ths} input").on 'click', (e) -> e.stopPropagation()
   $("#{ths} input").on 'keyup change', ->
-    column = table.column( $(this).parent().index()+':visible' )
+    window.column = table.column( $(this).parent().index()+':visible' )
     column.search(@value).draw()
