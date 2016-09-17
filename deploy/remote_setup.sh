@@ -44,14 +44,15 @@ mkdir -p "${app_folder}"
 # Create git bare repository
 cd "${repo_folder}"
 git init --bare
+# TODO erb command is not found on first installation: maybe source ~/.bashrc
 echo "erb app_folder=$app_folder repo_folder=$repo_folder sock_file=$sock_file rails_env=$rails_env ~/deploy/post-receive.erb > hooks/post-receive"
-erb app_path="${app_path}" app_folder="${app_folder}" repo_folder="${repo_folder}" sock_file="${sock_file}" rails_env="${rails_env}" ~/deploy/post-receive.erb > hooks/post-receive
+erb app_folder="${app_folder}" repo_folder="${repo_folder}" sock_file="${sock_file}" rails_env="${rails_env}" ~/deploy/post-receive.erb > hooks/post-receive
 chmod +x hooks/post-receive
 chown -R www-data:www-data "${apps_folder}"
 chown -R www-data:www-data "${repos_folder}"
 
 # nginx file
-erb sock_file="${sock_file}" app_folder="${app_folder}" ~/deploy/nginx_site.erb > "${nginx_file}"
+erb app_path="${app_path}" sock_file="${sock_file}" app_folder="${app_folder}" ~/deploy/nginx_site.erb > "${nginx_file}"
 sudo ln -s "${nginx_file}" "${nginx_file_enabled}"
 rm /etc/nginx/sites-enabled/default
 service nginx restart
