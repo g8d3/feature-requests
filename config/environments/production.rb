@@ -83,4 +83,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Rails 4 production
+  # config.serve_static_files = true
+  # Uncomment to run production on local
+  # config.log_level = :debug
+  # config.public_file_server.enabled = true
 end

@@ -30,10 +30,10 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'pry-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
 end
@@ -67,6 +67,7 @@ gem 'simple_form'
 
 # assets
 gem 'bootstrap-social-rails'
+# gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 # gem 'jquery-datatables-rails', '~> 3.3.0'
 
